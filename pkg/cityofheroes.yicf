@@ -1,0 +1,17 @@
+PRODUCT_NAME = CityofHeroes
+CUSTODIAN = team-dragon@yahoo-inc.com
+
+VERSION = 0.0.1
+SHORT_DESC = City of Heroes
+LONG_DESC = City of Heroes - Q3 2014
+
+YINST bug-product Search
+YINST bug-component General
+
+PERM = 444
+OWNER = root
+GROUP = wheel
+
+PACKAGE_OS_SPECIFIC=no
+
+find - - - share/htdocs/cityofheroes/ ../ -type f -name '*.*'
