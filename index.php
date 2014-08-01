@@ -48,7 +48,7 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="mainView" ng-controller="MainViewCtrl">
+    <div class="mainView" ng-controller="MainViewCtrl" ng-init="init(1)">
         <div class="submitBar">            
             <input name="Submit" value="Submit" type="button" ng-click="postData()" /> 
         </div>
