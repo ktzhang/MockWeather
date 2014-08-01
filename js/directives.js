@@ -47,12 +47,12 @@ app.directive('json', function($compile, $timeout) {
     },
     link: function(scope, element, attributes) {
         
-        var stringName = "Text";
-        var objectName = "Catalog"; // or technically more correct: Map
+        var stringName = "Value";
+        var objectName = "Object"; // or technically more correct: Map
         var arrayName = "List";
         var refName = "Reference";
 
-        scope.valueTypes = [stringName, objectName, arrayName, refName];
+        scope.valueTypes = [stringName, objectName, arrayName];
 
         //////
         // Helper functions

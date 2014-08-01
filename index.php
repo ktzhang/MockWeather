@@ -15,10 +15,7 @@
         }
         $ip = $_SERVER['REMOTE_ADDR']; 
         $data = $_POST['data'];
-        // $sql = "INSERT INTO data (id, ip, data) VALUES (NULL, 'aaa21', '$data') ON DUPLICATE KEY UPDATE `ip`='aaa21', `data`='$data'";
         $sql = "INSERT IGNORE INTO data (id, ip, data) VALUES ('$ip', '$ip', '$data') ON DUPLICATE KEY UPDATE `id`= '$ip', `ip`='$ip', `data`='$data'";
-
-        // $sql = "INSERT IGNORE INTO data SET `ip`='3s21', `data`='$data';";
 
         // Execute query
         if (mysqli_query($con,$sql)) {

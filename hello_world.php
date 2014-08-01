@@ -13,7 +13,6 @@ if (mysqli_connect_errno()) {
 }
 
 $sql = "SELECT * FROM `data` WHERE `ip` = '$ip'";
-
 $result = mysqli_query($con,$sql);
 if (!$result) {
 	echo "Error: " . mysqli_error($con);
@@ -27,8 +26,6 @@ if(mysqli_num_rows($result) > 0) {
 	// echo $singleResult."FDSF";
 	// print_r($singleResult);exit();
 }
-
-
 mysqli_close($con);
 
 $pattern = '$\((.*)\)$';
@@ -70,15 +67,8 @@ if($locationCount == 1) {
 	}
 }
 
-
-
+//Echoing the result
 echo json_encode($data);
-
-
-
-
-
-
 
 
 
