@@ -13,34 +13,46 @@ function MainViewCtrl($scope, $filter, $http) {
     };
 
     $scope.initData = function (mockType) {
+        var url = "";        
+       console.log("mockType = " + mockType);
+
         if(mockType === 1) {
+            console.log("St")
+            url = "mockweather.php";
             $http.get("http://localhost/mockweather/hello_world.php?format=json&env=store://GMdiGlUaaKwG5YdtkPUOp7&q=select%20%2A%20from%20yahoo.media.weather.oauth%20where%20flickrGroup%3D%271463451%40N25%27%20AND%20hourly%3D%27TRUE%27%20AND%20hours%3D%2723%27%20AND%20days%3D%2710%27%20AND%20pw%3D%271316%27%20AND%20ph%3D%271316%27%20AND%20uv%3D%27TRUE%27%20AND%20unit%3D%27C%27%20AND%20mp%3D%27true%27%20AND%20lang%3D%27en%27%20AND%20woeid%20in%20%2812518086%29")
             .success(function (data) {
                 // console.log(data);
                 $scope.jsonData = data['query']['results']['result'];
+                console.log(data);
+            })
+            .error(function (error) {
+                console.log(error);
+            });            
+        } else if(mockType === 2) {
+            url = "mockwarning.php";
+            $http.get("mockwarning.json")
+            .success(function (data) {
+                // console.log(data);
+                $scope.jsonData = data['woeids']['result']['0']['12520191']['warnings'];
             })
             .error(function (error) {
                 console.log(error);
             });
-
-
-            $scope.postData = function() {
-                var url = "index.php";
-                $http({
-                    method: 'POST',
-                    url: url,
-                    data: $.param({data: JSON.stringify($scope.jsonString)}),
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-                }).success(function (data) {
-                    console.log("return result " + data);
-                }).error(function (error) {
-                    console.log("error posting stuff");
-                });
-            }
-        } else if(mockType === 2) {
-
         } else {
             console.log("error in data type");
+        }
+
+        $scope.postData = function() {
+            $http({
+                method: 'POST',
+                url: url,
+                data: $.param({data: JSON.stringify($scope.jsonString), type: mockType}),
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function (data) {
+                console.log("return result " + data);
+            }).error(function (error) {
+                console.log("error posting stuff");
+            });
         }
     }
 

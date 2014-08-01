@@ -1,35 +1,3 @@
-<?php
-    header("Content-Type: text/html; charset = UTF-8");
-
-    if(isset($_POST['data'])) {
-        startStoring();
-    }
-    function startStoring() {
-        $con = mysqli_connect("localhost","root","","weathermock");
-        $con->set_charset('utf8');
-
-        // Check connection
-        if (mysqli_connect_errno()) {
-            exit;
-          // echo "Failed to connect to MySQL: " . mysqli_connect_error();
-        }
-        $ip = $_SERVER['REMOTE_ADDR']; 
-        $data = $_POST['data'];
-        $sql = "INSERT IGNORE INTO data (id, ip, data) VALUES ('$ip', '$ip', '$data') ON DUPLICATE KEY UPDATE `id`= '$ip', `ip`='$ip', `data`='$data'";
-
-        // Execute query
-        if (mysqli_query($con,$sql)) {
-          echo "Table persons created successfully";
-        } else {
-          echo "Error creating table: " . mysqli_error($con);
-        }
-
-        mysqli_close($con);
-        exit;
-    }
-
-?>
-
 <!doctype html>
 <html ng-app="JSONedit">
 <head>
@@ -48,7 +16,7 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="mainView" ng-controller="MainViewCtrl" ng-init="init(1)">
+    <div class="mainView" ng-controller="MainViewCtrl" ng-init="init(2)">
         <div class="submitBar">            
             <input name="Submit" value="Submit" type="button" ng-click="postData()" /> 
         </div>
