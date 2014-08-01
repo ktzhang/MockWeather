@@ -1,22 +1,15 @@
 function MainViewCtrl($scope, $filter, $http) {
+    // $scope.dataTypes = {"Location": 1, "Warnings": 2};
+    $scope.dataTypes = {1: "Location", 2: "Warnings"};
 
-    $scope.dataType = 1;
-    $scope.postData; 
-
-    $scope.init = function(type) {
-        //This function is sort of private constructor for controller
-        $scope.dataType = type;
-        $scope.initData(type);
-        //Based on passed argument you can make a call to resource
-        //and initialize more objects
-        //$resource.getMeBond(007)
-    };
 
     $scope.initData = function (mockType) {
-        var url = "";        
-       console.log("mockType = " + mockType);
+        $scope.dataType = mockType;
 
-        if(mockType === 1) {
+        var url = "";        
+        console.log("mockType = " + mockType);
+
+        if(mockType == 1) {
             console.log("St")
             url = "mockweather.php";
             $http.get("http://localhost/mockweather/hello_world.php?format=json&env=store://GMdiGlUaaKwG5YdtkPUOp7&q=select%20%2A%20from%20yahoo.media.weather.oauth%20where%20flickrGroup%3D%271463451%40N25%27%20AND%20hourly%3D%27TRUE%27%20AND%20hours%3D%2723%27%20AND%20days%3D%2710%27%20AND%20pw%3D%271316%27%20AND%20ph%3D%271316%27%20AND%20uv%3D%27TRUE%27%20AND%20unit%3D%27C%27%20AND%20mp%3D%27true%27%20AND%20lang%3D%27en%27%20AND%20woeid%20in%20%2812518086%29")
@@ -28,7 +21,7 @@ function MainViewCtrl($scope, $filter, $http) {
             .error(function (error) {
                 console.log(error);
             });            
-        } else if(mockType === 2) {
+        } else if(mockType == 2) {
             url = "mockwarning.php";
             $http.get("mockwarning.json")
             .success(function (data) {

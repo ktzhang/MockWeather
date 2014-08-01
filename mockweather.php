@@ -13,7 +13,7 @@
             exit;
           // echo "Failed to connect to MySQL: " . mysqli_connect_error();
         }
-        $table = "warning";
+        $table = "data";
 
         $sql = "CREATE TABLE IF NOT EXISTS `$table` (
               `id` varchar(31) NOT NULL,

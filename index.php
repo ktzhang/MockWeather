@@ -16,11 +16,26 @@
     <link href="css/styles.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="mainView" ng-controller="MainViewCtrl" ng-init="init(2)">
+    <div class="mainView" ng-controller="MainViewCtrl" ng-init="initData(1)">
         <div class="submitBar">            
             <input name="Submit" value="Submit" type="button" ng-click="postData()" /> 
         </div>
-        <h2 class="title">Location MockData</h2>
+        <h2 class="title">Weather Mock {{dataTypes[dataType]}}</h2>
+        <div class="dropdown">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                     <div class="" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li ng-repeat="(key, value) in dataTypes">
+                              <a ng-click="$parent.initData(key)">
+                                {{value}}
+                              </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
         <div class="jsonView" defocus>
             <json child="jsonData" type="'object'"></json>
         </div>

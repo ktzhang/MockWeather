@@ -27,11 +27,22 @@ ul.striped li.selected {
 
 
 /* JSON VIEW */
+
+.dropdown {
+    float:right;
+    margin-right:-30px;
+    margin-top:-3px;
+}
+.dropdown li a{
+    cursor: pointer;
+        /*border: solid 1px black;*/
+
+}
 .submitBar {
     position:fixed;
     margin:0 auto;
     z-index: 10000;
-    margin-left:-60px;
+    margin-left:720px;
     margin-top:60px;
     top:50px;
     /*width:40px;*/
@@ -41,8 +52,9 @@ ul.striped li.selected {
 .submitBar input { 
     outline: 0;
     border: 0;
-    background-color: rgb(79, 0, 169);
-    color: white;    
+    background-color: white;
+    /*background-color: rgb(79, 0, 169);*/
+    /*color: white;    */
 }
 
 h2.title {
