@@ -27,6 +27,27 @@ ul.striped li.selected {
 
 
 /* JSON VIEW */
+.submitBar {
+    position:fixed;
+    margin:0 auto;
+    z-index: 10000;
+    margin-left:-60px;
+    margin-top:60px;
+    top:50px;
+    /*width:40px;*/
+    /*height:40px;*/
+    /*background-color: rgb(79, 0, 169);*/
+}
+.submitBar input { 
+    outline: 0;
+    border: 0;
+    background-color: rgb(79, 0, 169);
+    color: white;    
+}
+
+h2.title {
+
+}
 
 /* striped background */
 .jsonView {
@@ -83,7 +104,7 @@ ul.striped li.selected {
     margin-right: 10px;
     position: relative;
     top: 7px;
-    z-index: 99999999999999;
+    z-index: 999;
     cursor: pointer;
 }
 

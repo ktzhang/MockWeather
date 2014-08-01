@@ -1,9 +1,10 @@
 <?php
 header("Content-Type: application/json; charset = UTF-8");
-
+$ip = $_SERVER['REMOTE_ADDR'];
 
 // Create connection
-$con=mysqli_connect("localhost","root","","weathermock");
+$con = mysqli_connect("localhost","root","","weathermock");
+$con->set_charset('utf8');
 
 // Check connection
 if (mysqli_connect_errno()) {
@@ -11,27 +12,26 @@ if (mysqli_connect_errno()) {
   // echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-// $sql = "CREATE TABLE Data 
-// (
-// PID INT NOT NULL AUTO_INCREMENT, 
-// PRIMARY KEY(PID),
-// FirstName CHAR(15),
-// LastName CHAR(15),
-// Age INT
-// )";
+$sql = "SELECT * FROM `data` WHERE `ip` = '$ip'";
 
-// // Execute query
-// if (mysqli_query($con,$sql)) {
-//   echo "Table persons created successfully";
-// } else {
-//   echo "Error creating table: " . mysqli_error($con);
-// }
+$result = mysqli_query($con,$sql);
+if (!$result) {
+	echo "Error: " . mysqli_error($con);
+}
+
+$singleResult = "";
+if(mysqli_num_rows($result) > 0) {
+	$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	// echo $row['data']; exit;
+	$singleResult = json_decode(substr($row['data'], 1, -1), true);
+	// echo $singleResult."FDSF";
+	// print_r($singleResult);exit();
+}
+
 
 mysqli_close($con);
 
 $pattern = '$\((.*)\)$';
-
-
 $count = 0;
 // echo "<pre>";print_r ($_GET); echo "</pre>";
 
@@ -51,19 +51,13 @@ $dataQuery = &$data['query'];
 $dataQuery['count'] = $locationCount;
 $dataQuery['created'] = date("Y-m-dTH:i:sZ");
 
-//Getting the reselt query
-$singleResult = $data['query']['results']['result'];
+//Setting default if not working
+if($singleResult == "") {
+	$singleResult = $data['query']['results']['result'];
+}
 
-
-$newData = array();
-$newData['locationString'] = "Kevin Town";
-$newData['forecast'] = "fsdA";
-
-$singleResult['location']['forecast']['day'][0]['text']['0']['content'] = "you sucks suker";
 
 //Starting manipulation
-
-
 $dataResults = &$data['query']['results']['result'];
 $dataResults = array();
 if($locationCount == 1) {
