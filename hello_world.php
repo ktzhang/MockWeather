@@ -44,7 +44,6 @@ if(mysqli_num_rows($result) > 0) {
 }
 mysqli_close($con);
 
-
 if($type == 2) {
 	//Reading from file
 	$fileLoc = "mockwarning.json";

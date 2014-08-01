@@ -64,15 +64,15 @@ function MainViewCtrl($scope, $filter, $http) {
         // $scope.rawJson = json;
         $scope.jsonString = $filter('json')(json);
     }, true);
-    // $scope.$watch('jsonString', function(json) {
-    //     try {
-    //         // $scope.rawJson = JSON.stringify(json);
-    //         $scope.jsonData = JSON.parse(json);
-    //         $scope.wellFormed = true;
-    //     } catch(e) {
-    //         $scope.wellFormed = false;
-    //     }
-    // }, true);
+    $scope.$watch('jsonString', function(json) {
+        try {
+            // $scope.rawJson = JSON.stringify(json);
+            $scope.jsonData = JSON.parse(json);
+            $scope.wellFormed = true;
+        } catch(e) {
+            $scope.wellFormed = false;
+        }
+    }, true);
 
 
 
