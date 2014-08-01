@@ -53,7 +53,7 @@ if($type == 2) {
 
 
 	if($singleResult == "") {
-		$singleResult = $data['woeids']['result']['0']['12520191']['warnings'];
+		$singleResult = $data['woeids']['result'][0]['12520191']['warnings'];
 	}
 
 	//Getting woeArray
@@ -63,7 +63,7 @@ if($type == 2) {
 	$locationCount = count($woeArray);
 
 
-	$dataResults = &$data['woeids']['result']['0'];
+	$dataResults = &$data['woeids']['result'];
 	$dataResults = array();
 	for($i = 0; $i < $locationCount; $i++) {
 		$dataResults[$woeArray[$i]]['warnings'] = $singleResult;
