@@ -44,7 +44,7 @@ function MainViewCtrl($scope, $filter, $http) {
             }).success(function (data) {
                 console.log("return result " + data);
             }).error(function (error) {
-                console.log("error posting stuff");
+                console.log("error posting stuff to" + url);
             });
         }
     }
