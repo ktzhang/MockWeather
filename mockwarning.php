@@ -17,7 +17,7 @@
         
 
         $table = "warning";
-        $sql = "CREATE TABLE IF NOT EXISTS `$table` (
+        $sql = "CREATE TABLE IF NOT EXISTS `warning` (
               `id` varchar(31) NOT NULL,
               `ip` varchar(31) NOT NULL,
               `data` text NOT NULL,
